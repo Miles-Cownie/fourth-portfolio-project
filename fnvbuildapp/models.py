@@ -8,16 +8,6 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Awaiting Approval"), (2, "Published"))
 
 
-class Gender(models.Model):
-    GENDER_CHOICES = (
-        ("M", "Male"),
-        ("F", "Female"),
-    )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-
-    def __str__(self):
-        return self.gender
-
 # SPECIAL stats Model
 
 
@@ -233,6 +223,11 @@ class StartingSkills(models.Model):
 
 
 class CharacterBuild(models.Model):
+
+    class Gender(models.Choices):
+        MALE = 'M'
+        FEMALE = 'F'
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -244,7 +239,7 @@ class CharacterBuild(models.Model):
     featured_image = CloudinaryField('Build Image', default='placeholder')
     excerpt = models.TextField(blank=True)
     description = models.TextField()
-    build_gender = models.ManyToManyField(Gender)
+    build_gender = models.CharField(max_length=1, choices=Gender.choices)
     build_special = models.ManyToManyField(Special)
     build_traits = models.ManyToManyField(Traits, blank=True)
     build_tag_skills = models.ManyToManyField(TagSkills)
