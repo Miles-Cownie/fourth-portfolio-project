@@ -239,7 +239,9 @@ class CharacterBuild(models.Model):
     featured_image = CloudinaryField('Build Image', default='placeholder')
     excerpt = models.TextField(blank=True)
     description = models.TextField()
-    build_gender = models.CharField(max_length=1, choices=Gender.choices)
+    build_gender = models.CharField(
+        max_length=1, choices=Gender.choices, default='F'
+        )
     build_special = models.ManyToManyField(Special)
     build_traits = models.ManyToManyField(Traits, blank=True)
     build_tag_skills = models.ManyToManyField(TagSkills)
