@@ -83,6 +83,39 @@ class Special(models.Model):
             self.luck
             ]
 
+# Traits Model
+
+
+class Traits(models.Model):
+    trait_name = models.CharField(max_length=150)
+    trait_detail = models.TextField()
+    trait_image = CloudinaryField('Trait Image')
+
+    def __str__(self):
+        return self.trait_name
+
+# Tagged Skills Model
+
+
+class TagSkills(models.Model):
+    tag_skill_name = models.CharField(max_length=150)
+    skill_detail = models.TextField()
+    skill_image = CloudinaryField('Skill Image')
+
+    def __str__(self):
+        return self.tag_skill_name
+
+# Perks Model
+
+
+class Perks(models.Model):
+    perk_name = models.CharField(max_length=150)
+    perk_detail = models.TextField()
+    perk_image = CloudinaryField('Perk Image')
+
+    def __str__(self):
+        return self.perk_name
+
 # Character Build Model
 
 
