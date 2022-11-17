@@ -63,15 +63,7 @@ class Special(models.Model):
         )
 
     def __str__(self):
-        return [
-            self.strength,
-            self.perception,
-            self.endurance,
-            self.charisma,
-            self.agility,
-            self.intelligence,
-            self.luck
-            ]
+        return f"SPECIAL: S-{self.strength} P-{self.perception} E-{self.endurance} C-{self.charisma} I-{self.intelligence} A-{self.agility} L-{self.luck}"
 
 # Traits Model
 
@@ -203,21 +195,7 @@ class StartingSkills(models.Model):
         )
 
     def __str__(self):
-        return [
-            self.barter,
-            self.energy_weapons,
-            self.explosives,
-            self.guns,
-            self.lockipick,
-            self.medicine,
-            self.melee_weapons,
-            self.repair,
-            self.science,
-            self.sneak,
-            self.speech,
-            self.survival,
-            self.unarmed
-            ]
+        return f"{[self.barter, self.energy_weapons, self.explosives, self.guns, self.lockipick, self.medicine, self.melee_weapons, self.repair, self.science, self.sneak, self.speech, self.survival, self.unarmed]}"
 
 # Character Build Model
 
