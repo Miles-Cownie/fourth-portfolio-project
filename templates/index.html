@@ -8,11 +8,51 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-
+                {% for build in build_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                {% if "placeholder" in build.featured_image.url %}
+                                <img class="card-img-top" 
+                                    src="#" alt="pipboy profile image">
+                                {% else %}
+                                <img src="{{ build.featured_image.url }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ build.author }}</p>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h2 class="card-title">{{ build.title }}</h2>
+                                <p class="card-text"> {{ build.excerpt }}</p>
+                            </a>
+                            <hr />
+                            <p class="card-text text-muted h6">{{ build.created_on }} <i class="far fa-heart">
+                            </i>{{ build.number_of_likes }}</p>
+                        </div>
+                    </div>
+                {% if forloop.counter|divisibleby:3 %}
+                </div>
+                <div class="row">
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
-
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.next_page_number }}"
+                 class="page-link">&laquo; PREV</a></li>
+            {% endif %}
+            {% if page.obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}"
+                class="page-link">&laquo; PREV</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 
 {%endblock%}
