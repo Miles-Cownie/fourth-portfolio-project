@@ -2,19 +2,26 @@ body {
     background-color: #f5f5f5;
 }
 
+.bg-image {
+    background-image: url(https://res.cloudinary.com/miles-cownie/image/upload/v1669214451/base_background_hcvnjz.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;  
+}
+
 .logo {
     font-family: Sono, sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #b6851d;
 }
 
-.thin {
-    font-weight: 400;
+.nav-link {
+    color: #b6851d;
 }
 
 .light-bg {
-    background-color: #f5f5f5;
+    background-color: #f5f5f591;
 }
 
 .dark-bg {
@@ -135,4 +142,15 @@ body {
     color: #E84610;
     background: transparent;
     border: none;
+}
+
+.footer_text {
+    font-family: Sono, sans-serif;
+    color: #b6851d;
+}
+
+.footer_link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
 }
