@@ -10,7 +10,7 @@
             <div class="row">
                 {% for build in characterbuild_list %}
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4 text-white bg-dark">
                         <div class="card-body">
                             {% if "placeholder" in build.featured_image.url %}
                             <img class="card-img-top" 
@@ -27,7 +27,7 @@
                             <p class="card-text">{{ build.excerpt }}</p>
                         </a>
                         <hr />
-                        <p class="card-text text-muted h6">{{ build.created_on }} <i class="far fa-heart">
+                        <p class="card-text text-muted h6 created-date">{{ build.created_on }} <i class="far fa-heart">
                             </i>{{ build.number_of_likes }}</p>
                     </div>
                 </div>
