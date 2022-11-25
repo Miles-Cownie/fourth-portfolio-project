@@ -44,6 +44,88 @@ class Perks(models.Model):
 
 
 class StartingSkills(models.Model):
+
+
+    def __str__(self):
+        return f"{[self.barter,self.energy_weapons, self.explosives, self.guns, self.lockipick, self.medicine, self.melee_weapons, self.repair, self.science, self.sneak, self.speech, self.survival, self.unarmed]}"
+
+# Character Build Model
+
+
+class CharacterBuild(models.Model):
+
+    class Gender(models.TextChoices):
+        MALE = 'M', 'Male'
+        FEMALE = 'F', 'Female'
+
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="fnv_build_author"
+    )
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    featured_image = CloudinaryField('Build Image', default='placeholder')
+    excerpt = models.TextField(blank=True)
+    description = models.TextField()
+    gender = models.CharField(
+        max_length=1,
+        choices=Gender.choices,
+        default=Gender.FEMALE
+        )
+    strength = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    perception = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    endurance = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    charisma = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    intelligence = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    agility = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    luck = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    traits = models.ManyToManyField(Traits, blank=True)
+    tag_skills = models.ManyToManyField(TagSkills)
+    perks = models.ManyToManyField(Perks, blank=True)
     barter = models.IntegerField(
         default=15,
         validators=[
@@ -135,88 +217,6 @@ class StartingSkills(models.Model):
             MaxValueValidator(47)
             ]
         )
-
-    def __str__(self):
-        return f"{[self.barter, self.energy_weapons, self.explosives, self.guns, self.lockipick, self.medicine, self.melee_weapons, self.repair, self.science, self.sneak, self.speech, self.survival, self.unarmed]}"
-
-# Character Build Model
-
-
-class CharacterBuild(models.Model):
-
-    class Gender(models.TextChoices):
-        MALE = 'M', 'Male'
-        FEMALE = 'F', 'Female'
-
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="fnv_build_author"
-    )
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
-    featured_image = CloudinaryField('Build Image', default='placeholder')
-    excerpt = models.TextField(blank=True)
-    description = models.TextField()
-    build_gender = models.CharField(
-        max_length=1,
-        choices=Gender.choices,
-        default=Gender.FEMALE
-        )
-    strength = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    perception = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    endurance = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    charisma = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    intelligence = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    agility = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    luck = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    build_traits = models.ManyToManyField(Traits, blank=True)
-    build_tag_skills = models.ManyToManyField(TagSkills)
-    build_perks = models.ManyToManyField(Perks, blank=True)
-    build_starting_skills = models.ManyToManyField(StartingSkills, blank=True)
     likes = models.ManyToManyField(
         User, related_name='fnv_build_like', blank=True
         )

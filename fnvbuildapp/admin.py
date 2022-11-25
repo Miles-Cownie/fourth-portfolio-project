@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CharacterBuild, Traits, TagSkills, Perks, StartingSkills, Comment
+from .models import CharacterBuild, Traits, TagSkills, Perks, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -7,13 +7,13 @@ from django_summernote.admin import SummernoteModelAdmin
 class BuildAdmin(SummernoteModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on', 'build_gender')
+    list_filter = ('status', 'created_on', 'gender')
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'description']
     summernote_fields = ('__all__')
 
 
-@admin.register(Traits, TagSkills, Perks, StartingSkills)
+@admin.register(Traits, TagSkills, Perks)
 class SpecialAdmin(SummernoteModelAdmin):
 
     summernote_fields = ('__all__')
