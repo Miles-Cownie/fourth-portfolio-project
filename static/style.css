@@ -78,6 +78,14 @@ body {
     z-index: 100;
 }
 
+.build-details {
+    max-height: 55vh;
+}
+
+.build-details::-webkit-scrollbar {
+    display: none;
+}
+
 .post-link {
     text-decoration: none;
     color: whitesmoke;
