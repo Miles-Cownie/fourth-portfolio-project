@@ -17,18 +17,18 @@ class BuildList(generic.ListView):
 class BuildDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=2)
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by('created_on')
+        queryset = CharacterBuild.objects.filter(status=2)
+        build = get_object_or_404(queryset, slug=slug)
+        comments = build.comments.filter(approved=True).order_by('created_on')
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if build.likes.filter(id=self.request.user.id).exists():
             liked = True
 
         return render(
             request,
             "build_detail.html",
             {
-                "post": post,
+                "build": build,
                 "comments": comments,
                 "liked": liked
             }

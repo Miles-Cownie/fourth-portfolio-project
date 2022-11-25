@@ -5,7 +5,7 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="post-title">
-                    {{build.title}
+                    {{ build.title }}
                 </h1>
                 <p class="post-subtitle"> {{ build.author }} | {{ build.updated_on }}</p>
             </div>
@@ -14,7 +14,7 @@
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="#" width="100%">
                 {% else %}
-                <img src="{{ build.featured_image }}" width="100%">
+                <img src="{{ build.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -24,36 +24,34 @@
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <p class="card-text ">{{ build.description }}</p>
-                <p class="card-text">{{ build.build_gender }}</p>
+            <div class="card-body bg-dark text-light">
+                <p class="card-text ">{{ build.description | safe }}</p>
+                <p class="card-text">Character Gender: {{ build.get_build_gender_display }}</p>
                 <ul class="list-group list-group-flush">
                     <h6 class="card-title">SPECIAL Stats</h6>
-                    <li class="list-group-item">S:{{ build.build_special.strength }}</li>
-                    <li class="list-group-item">P:{{ build.build_special.perception }}</li>
-                    <li class="list-group-item">E:{{ build.build_special.endurance }}</li>
-                    <li class="list-group-item">C:{{ build.build_special.charisma }}</li>
-                    <li class="list-group-item">I:{{ build.build_special.intelligence }}</li>
-                    <li class="list-group-item">A:{{ build.build_special.agility }}</li>
-                    <li class="list-group-item">L:{{ build.build_special.luck }}</li>
+                    <li class="list-group-item">S: {{ build.strength }}</li>
+                    <li class="list-group-item">P: {{ build.perception }}</li>
+                    <li class="list-group-item">E: {{ build.endurance }}</li>
+                    <li class="list-group-item">C: {{ build.charisma }}</li>
+                    <li class="list-group-item">I: {{ build.intelligence }}</li>
+                    <li class="list-group-item">A: {{ build.agility }}</li>
+                    <li class="list-group-item">L: {{ build.luck }}</li>
                 </ul>
                 <ul class="list-group list-group-flush">
                     <h6 class="card-title">Character Traits</h6>
-                    {% for trait in build_traits %}
-                    <li class="list-group-item">{{ build.build_traits.trait_name }}</li>
+                    {% for item in build.build_traits.all %}
+                    <li class="list-group-item"> {{ item }}</li>
                     {% endfor %}
                 </ul>
                 <ul class="list-group list-group-flush">
                     <h6 class="card-title">Recommended Perks</h6>
-                    {% for perk in build_perks %}
-                    <li class="list-group-item">{{ build.build_perks.perk_name }}</li>
+                    {% for item in build.build_perks.all %}
+                    <li class="list-group-item"> {{ item }}</li>
                     {% endfor %}
                 </ul>
                 <ul class="list-group list-group-flush">
                     <h6 class="card-title">Starting Skills</h6>
-                    {% for skill in build_starting_skills %}
-                    <li class="list-group-item">{{ build.build_starting_skills }}</li>
-                    {% endfor %}
+                    <li class="list-group-item"></li>
                 </ul>
                 <div class="row">
 

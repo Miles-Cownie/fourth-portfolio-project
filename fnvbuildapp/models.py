@@ -7,64 +7,6 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Awaiting Approval"), (2, "Published"))
 
-
-# SPECIAL stats Model
-
-
-class Special(models.Model):
-    strength = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    perception = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    endurance = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    charisma = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    intelligence = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    agility = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-    luck = models.IntegerField(
-        default=5,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-            ]
-        )
-
-    def __str__(self):
-        return f"SPECIAL: S-{self.strength} P-{self.perception} E-{self.endurance} C-{self.charisma} I-{self.intelligence} A-{self.agility} L-{self.luck}"
-
 # Traits Model
 
 
@@ -202,9 +144,9 @@ class StartingSkills(models.Model):
 
 class CharacterBuild(models.Model):
 
-    class Gender(models.Choices):
-        MALE = 'M'
-        FEMALE = 'F'
+    class Gender(models.TextChoices):
+        MALE = 'M', 'Male'
+        FEMALE = 'F', 'Female'
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -218,9 +160,59 @@ class CharacterBuild(models.Model):
     excerpt = models.TextField(blank=True)
     description = models.TextField()
     build_gender = models.CharField(
-        max_length=1, choices=Gender.choices, default='F'
+        max_length=1,
+        choices=Gender.choices,
+        default=Gender.FEMALE
         )
-    build_special = models.ManyToManyField(Special)
+    strength = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    perception = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    endurance = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    charisma = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    intelligence = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    agility = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
+    luck = models.IntegerField(
+        default=5,
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+            ]
+        )
     build_traits = models.ManyToManyField(Traits, blank=True)
     build_tag_skills = models.ManyToManyField(TagSkills)
     build_perks = models.ManyToManyField(Perks, blank=True)

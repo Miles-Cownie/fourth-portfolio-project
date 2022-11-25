@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CharacterBuild, Special, Traits, TagSkills, Perks, StartingSkills, Comment
+from .models import CharacterBuild, Traits, TagSkills, Perks, StartingSkills, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -13,7 +13,7 @@ class BuildAdmin(SummernoteModelAdmin):
     summernote_fields = ('__all__')
 
 
-@admin.register(Special, Traits, TagSkills, Perks, StartingSkills)
+@admin.register(Traits, TagSkills, Perks, StartingSkills)
 class SpecialAdmin(SummernoteModelAdmin):
 
     summernote_fields = ('__all__')
