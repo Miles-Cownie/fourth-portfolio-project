@@ -45,7 +45,6 @@ class Perks(models.Model):
 
 class StartingSkills(models.Model):
 
-
     def __str__(self):
         return f"{[self.barter,self.energy_weapons, self.explosives, self.guns, self.lockipick, self.medicine, self.melee_weapons, self.repair, self.science, self.sneak, self.speech, self.survival, self.unarmed]}"
 
