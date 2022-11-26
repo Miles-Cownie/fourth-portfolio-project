@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import CharacterBuild
+from .forms import CommentForm
 
 # Home Page View
 
@@ -30,6 +31,7 @@ class BuildDetail(View):
             {
                 "build": build,
                 "comments": comments,
-                "liked": liked
+                "liked": liked,
+                "comment_form": CommentForm()
             }
         )
