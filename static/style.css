@@ -6,11 +6,11 @@ body {
     background-image: url(https://res.cloudinary.com/miles-cownie/image/upload/v1669214451/base_background_hcvnjz.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 95vh;  
+    height: 93vh;  
 }
 
 .logo {
-    font-family: Sono, sans-serif;
+    font-family: 'Sono', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #b6851d;
@@ -54,7 +54,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    font-family: 'Merriweather Sans', sans-serif;;
+    background-color: #212529;
     color: white;
     position: relative;
 }
@@ -64,26 +65,20 @@ body {
     overflow: hidden;
 }
 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
 .build-details {
+    font-family: 'Merriweather', sans-serif;
     max-height: 55vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .build-details::-webkit-scrollbar {
     display: none;
+}
+
+.card-title {
+    padding-top: 10px;
+    font-weight: 700;
 }
 
 .post-link {

@@ -12,7 +12,7 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="#" width="100%">
+                <img src="https://res.cloudinary.com/miles-cownie/image/upload/v1669037137/aj0wwlpk9h0a1edcxca1.jpg" width="100%">
                 {% else %}
                 <img src="{{ build.featured_image.url }}" width="100%">
                 {% endif %}
@@ -25,69 +25,80 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body bg-dark text-light">
-                <p class="card-text ">{{ build.description | safe }}</p>
-                <p class="card-text">Character Gender: {{ build.get_gender_display }}</p>
-                <ul class="list-group list-group-flush">
-                    <h6 class="card-title">SPECIAL Stats</h6>
-                    <li class="list-group-item">S: {{ build.strength }}</li>
-                    <li class="list-group-item">P: {{ build.perception }}</li>
-                    <li class="list-group-item">E: {{ build.endurance }}</li>
-                    <li class="list-group-item">C: {{ build.charisma }}</li>
-                    <li class="list-group-item">I: {{ build.intelligence }}</li>
-                    <li class="list-group-item">A: {{ build.agility }}</li>
-                    <li class="list-group-item">L: {{ build.luck }}</li>
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <h6 class="card-title">Character Traits</h6>
-                    {% for item in build.traits.all %}
-                    <li class="list-group-item"> {{ item }}</li>
-                    {% endfor %}
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <h6 class="card-title">Recommended Perks</h6>
-                    {% for item in build.perks.all %}
-                    <li class="list-group-item"> {{ item }}</li>
-                    {% endfor %}
-                </ul>
-                <ul class="list-group list-group-flush">
-                    <h6 class="card-title">Starting Skills</h6>
-                    <li class="list-group-item">Barter = {{ build.barter }}</li>
-                    <li class="list-group-item">Energy Weapons = {{ build.energy_weapons }}</li>
-                    <li class="list-group-item">Explosives = {{ build.explosives }}</li>
-                    <li class="list-group-item">Guns = {{ build.guns }}</li>
-                    <li class="list-group-item">Lockpick = {{ build.lockpick }}</li>
-                    <li class="list-group-item">Medicine = {{ build.medicine }}</li>
-                    <li class="list-group-item">Melee Weapons = {{ build.melee_weapons }}</li>
-                    <li class="list-group-item">Repair = {{ build.repair }}</li>
-                    <li class="list-group-item">Science = {{ build.science }}</li>
-                    <li class="list-group-item">Sneak = {{ build.sneak }}</li>
-                    <li class="list-group-item">Speech = {{ build.speech }}</li>
-                    <li class="list-group-item">Survival = {{ build.survival }}</li>
-                    <li class="list-group-item">Unarmed = {{ build.unarmed }}</li>
-                </ul>
+                <span class="card-text ">{{ build.description|safe }}</span>
+                <p class="card-text"><strong>Character Gender:</strong> {{ build.get_gender_display }}</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md">
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">SPECIAL Stats</h6>
+                                <li class="list-group-item">S: {{ build.strength }}</li>
+                                <li class="list-group-item">P: {{ build.perception }}</li>
+                                <li class="list-group-item">E: {{ build.endurance }}</li>
+                                <li class="list-group-item">C: {{ build.charisma }}</li>
+                                <li class="list-group-item">I: {{ build.intelligence }}</li>
+                                <li class="list-group-item">A: {{ build.agility }}</li>
+                                <li class="list-group-item">L: {{ build.luck }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md">
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">Character Traits</h6>
+                                {% for item in build.traits.all %}
+                                <li class="list-group-item"> {{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">Tagged Skills</h6>
+                                {% for item in build.tag_skills.all %}
+                                <li class="list-group-item"> {{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">Recommended Perks</h6>
+                                {% for item in build.perks.all %}
+                                <li class="list-group-item"> {{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md">
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">Starting Skills</h6>
+                                <li class="list-group-item">Barter = {{ build.barter }}</li>
+                                <li class="list-group-item">Energy Weapons = {{ build.energy_weapons }}</li>
+                                <li class="list-group-item">Explosives = {{ build.explosives }}</li>
+                                <li class="list-group-item">Guns = {{ build.guns }}</li>
+                                <li class="list-group-item">Lockpick = {{ build.lockpick }}</li>
+                                <li class="list-group-item">Medicine = {{ build.medicine }}</li>
+                                <li class="list-group-item">Melee Weapons = {{ build.melee_weapons }}</li>
+                                <li class="list-group-item">Repair = {{ build.repair }}</li>
+                                <li class="list-group-item">Science = {{ build.science }}</li>
+                                <li class="list-group-item">Sneak = {{ build.sneak }}</li>
+                                <li class="list-group-item">Speech = {{ build.speech }}</li>
+                                <li class="list-group-item">Survival = {{ build.survival }}</li>
+                                <li class="list-group-item">Unarmed = {{ build.unarmed }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
 
                     <div class="col-1">
                         <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> </strong>
+                        <strong class="text-light"><i class="far fa-heart"></i> </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                        <strong class="text-light"><i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
-                        {{ total_comments }} </strong>
+                            {{ total_comments }} </strong>
                         {% endwith %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
+    <div class="row bg-dark text-light">
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
