@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import CharacterBuild
 from .forms import CommentForm
 
@@ -67,3 +68,18 @@ class BuildDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+# Likes Class
+
+
+class BuildLike(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        build = get_object_or_404(CharacterBuild, slug=slug)
+
+        if build.likes.filter(id=request.user.id).exists():
+            build.likes.remove(request.user)
+        else:
+            build.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('build_detail', args=[slug]))
