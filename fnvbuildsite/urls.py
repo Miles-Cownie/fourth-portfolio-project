@@ -20,5 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fnvbuildapp.urls'), name='fnvbuildapp-urls'),
     path('summernote/', include('django_summernote.urls')),
-    path('accounts/', include('allauth.urls')),
 ]
