@@ -1,5 +1,6 @@
 body {
     background-color: #f5f5f5;
+    font-family: 'Merriweather', sans-serif;
 }
 
 .bg-image {
@@ -103,14 +104,15 @@ body {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: #b6851d;
+    color: black;
+    margin-bottom: 10px;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: black;
+    color: #b6851d;
 }
 
 .link {
