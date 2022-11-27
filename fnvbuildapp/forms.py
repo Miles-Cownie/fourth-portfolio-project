@@ -1,6 +1,7 @@
 from .models import Comment, CharacterBuild
 from django import forms
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

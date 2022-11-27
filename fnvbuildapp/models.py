@@ -230,7 +230,8 @@ class CharacterBuild(models.Model):
 
 class Comment(models.Model):
     character_build = models.ForeignKey(
-        CharacterBuild, on_delete=models.CASCADE, related_name="comments", null=True
+        CharacterBuild, on_delete=models.CASCADE, related_name="comments",
+        null=True
         )
     name = models.CharField(max_length=90, null=True)
     email = models.EmailField(null=True)

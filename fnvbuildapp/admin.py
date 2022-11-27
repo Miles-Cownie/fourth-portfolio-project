@@ -11,6 +11,10 @@ class BuildAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'description']
     summernote_fields = ('__all__')
+    actions = ['approve_build']
+
+    def approve_build(self, request, queryset):
+        queryset.update(status=2)
 
 
 @admin.register(Traits, TagSkills, Perks)
