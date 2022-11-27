@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import CharacterBuild
 from .forms import CommentForm, CharacterBuildForm
@@ -82,6 +83,12 @@ class CharacterBuildUpdate(generic.UpdateView):
     model = CharacterBuild
     form_class = CharacterBuildForm
     template_name = 'characterbuild_form.html'
+
+
+class CharacterBuildDelete(generic.DeleteView):
+    model = CharacterBuild
+    template_name = 'characterbuild_confirm_delete.html'
+    success_url = reverse_lazy('index')
 
 # Likes Class
 
