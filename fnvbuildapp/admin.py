@@ -22,7 +22,7 @@ class SpecialAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
 
-    list_display = ('name', 'body', 'charactercomment',
+    list_display = ('name', 'body', 'character_build',
                     'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')

@@ -2,58 +2,60 @@
 
 {% block content %}
 <br>
-{% csrf_token %}
-<div class="container build_form bg-dark text-light">
-  <div class="row">
-    <div class="col-md">
-      <h5 class="mt-2 card-title">Character Name:</h5>
-      <span>{{ form.title }}</span>
-      <h5 class="mt-2 card-title">Character Image:</h5>
-      <span>{{ form.featured_image }}</span>
-      <h5 class="mt-2 card-title">Character Excerpt:</h5>
-      <span>{{ form.excerpt }}</span>
-      <h5 class="mt-2 card-title">Description:</h5>
-      <span>{{ form.description }}</span>
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="container bg-dark text-light">
+    <div class="row build-form overflow-auto">
+      <div class="col-md">
+        <h5 class="mt-2 card-title">Character Name:</h5>
+        <span>{{ form.title }}</span>
+        <h5 class="mt-2 card-title">Character Image:</h5>
+        <span>{{ form.featured_image }}</span>
+        <h5 class="mt-2 card-title">Character Excerpt:</h5>
+        <span>{{ form.excerpt }}</span>
+        <h5 class="mt-2 card-title">Description:</h5>
+        <span>{{ form.description }}</span>
+        <ul class="list-group list-group-flush">
+          <h5 class="card-title">Starting Skills</h5>
+          <li class="list-group-item form-list">Barter = {{ form.barter }}</li>
+          <li class="list-group-item form-list">Energy Weapons = {{ form.energy_weapons }}</li>
+          <li class="list-group-item form-list">Explosives = {{ form.explosives }}</li>
+          <li class="list-group-item form-list">Guns = {{ form.guns }}</li>
+          <li class="list-group-item form-list">Lockpick = {{ form.lockpick }}</li>
+          <li class="list-group-item form-list">Medicine = {{ form.medicine }}</li>
+          <li class="list-group-item form-list">Melee Weapons = {{ form.melee_weapons }}</li>
+          <li class="list-group-item form-list">Repair = {{ form.repair }}</li>
+          <li class="list-group-item form-list">Science = {{ form.science }}</li>
+          <li class="list-group-item form-list">Sneak = {{ form.sneak }}</li>
+          <li class="list-group-item form-list">Speech = {{ form.speech }}</li>
+          <li class="list-group-item form-list">Survival = {{ form.survival }}</li>
+          <li class="list-group-item form-list">Unarmed = {{ form.unarmed }}</li>
+        </ul>
+      </div>
+      <div class="col-md">
+        <h5 class="mt-2 card-title">Character Gender:</h5>
+        <span>{{ form.gender }}</span>
+        <ul class="list-group list-group-flush">
+          <h5 class="card-title">SPECIAL Stats</h6>
+            <li class="list-group-item form-list">S: {{ form.strength }}</li>
+            <li class="list-group-item form-list">P: {{ form.perception }}</li>
+            <li class="list-group-item form-list">E: {{ form.endurance }}</li>
+            <li class="list-group-item form-list">C: {{ form.charisma }}</li>
+            <li class="list-group-item form-list">I: {{ form.intelligence }}</li>
+            <li class="list-group-item form-list">A: {{ form.agility }}</li>
+            <li class="list-group-item form-list">L: {{ form.luck }}</li>
+        </ul>
+        <h5 class="card-title">Character Traits</h5>
+        <span>{{ form.traits }}</span>
+        <h5 class="card-title">Tagged Skills</h5>
+        <span class="no-bullets">{{ form.tag_skills }}</span>
+      </div>
+      <div class="col-md">
+        <h5 class="card-title">Recommended Perks</h5>
+        <span>{{ form.perks }}</span>
+      </div>
     </div>
-    <div class="col-md">
-      <h5 class="mt-2 card-title">Character Gender:</h5>
-      <span>{{ form.gender }}</span>
-      <ul class="list-group list-group-flush">
-        <h5 class="card-title">SPECIAL Stats</h6>
-          <li class="list-group-item form-list">S: {{ form.strength }}</li>
-          <li class="list-group-item form-list">P: {{ form.perception }}</li>
-          <li class="list-group-item form-list">E: {{ form.endurance }}</li>
-          <li class="list-group-item form-list">C: {{ form.charisma }}</li>
-          <li class="list-group-item form-list">I: {{ form.intelligence }}</li>
-          <li class="list-group-item form-list">A: {{ form.agility }}</li>
-          <li class="list-group-item form-list">L: {{ form.luck }}</li>
-      </ul>
-      <h5 class="card-title">Character Traits</h5>
-      <span>{{ form.traits }}</span>
-      <h5 class="card-title">Tagged Skills</h5>
-      <span class="no-bullets">{{ form.tag_skills }}</span>
-    </div>
-    <div class="col-md">
-      <h5 class="card-title">Recommended Perks</h5>
-      <span>{{ form.perks }}</span>
-      <ul class="list-group list-group-flush">
-        <h5 class="card-title">Starting Skills</h5>
-        <li class="list-group-item form-list">Barter = {{ form.barter }}</li>
-        <li class="list-group-item form-list">Energy Weapons = {{ form.energy_weapons }}</li>
-        <li class="list-group-item form-list">Explosives = {{ form.explosives }}</li>
-        <li class="list-group-item form-list">Guns = {{ form.guns }}</li>
-        <li class="list-group-item form-list">Lockpick = {{ form.lockpick }}</li>
-        <li class="list-group-item form-list">Medicine = {{ form.medicine }}</li>
-        <li class="list-group-item form-list">Melee Weapons = {{ form.melee_weapons }}</li>
-        <li class="list-group-item form-list">Repair = {{ form.repair }}</li>
-        <li class="list-group-item form-list">Science = {{ form.science }}</li>
-        <li class="list-group-item form-list">Sneak = {{ form.sneak }}</li>
-        <li class="list-group-item form-list">Speech = {{ form.speech }}</li>
-        <li class="list-group-item form-list">Survival = {{ form.survival }}</li>
-        <li class="list-group-item form-list">Unarmed = {{ form.unarmed }}</li>
-      </ul>
-    </div>
+    <input class="btn btn-signup btn-lg" type="submit" value="Submit" />
   </div>
-  <input class="btn btn-signup btn-lg" type="submit" value="Submit" />
-</div>
+</form>
 {% endblock %}

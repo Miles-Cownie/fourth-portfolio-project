@@ -13,8 +13,8 @@ STATUS = ((0, "Draft"), (1, "Awaiting Approval"), (2, "Published"))
 
 class Traits(models.Model):
     trait_name = models.CharField(max_length=150)
-    trait_detail = models.TextField()
-    trait_image = CloudinaryField('Trait Image')
+    trait_detail = models.TextField(blank=True)
+    trait_image = CloudinaryField('Trait Image', blank=True)
 
     def __str__(self):
         return self.trait_name
@@ -51,7 +51,7 @@ class CharacterBuild(models.Model):
         FEMALE = 'F', 'Female'
 
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, blank=True, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="fnv_build_author"
     )
@@ -229,14 +229,14 @@ class CharacterBuild(models.Model):
 
 
 class Comment(models.Model):
-    charactercomment = models.ForeignKey(
-        CharacterBuild, on_delete=models.CASCADE, related_name="comments"
+    character_build = models.ForeignKey(
+        CharacterBuild, on_delete=models.CASCADE, related_name="comments", null=True
         )
-    name = models.CharField(max_length=90)
-    email = models.EmailField()
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    name = models.CharField(max_length=90, null=True)
+    email = models.EmailField(null=True)
+    body = models.TextField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    approved = models.BooleanField(default=False, null=True)
 
     class Meta:
         ordering = ['created_on']

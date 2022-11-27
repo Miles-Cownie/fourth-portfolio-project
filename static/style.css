@@ -79,9 +79,13 @@ body {
 
 .build-form {
     font-family: 'Merriweather', sans-serif;
-    max-height: 85vh;
+    max-height: 81vh;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.build-form::-webkit-scrollbar {
+    display: none;
 }
 
 .form-list {

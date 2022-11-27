@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.utils.text import slugify
 from .models import CharacterBuild
 from .forms import CommentForm, CharacterBuildForm
 
@@ -54,7 +55,7 @@ class BuildDetail(View):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.build = build
-            commnet.save()
+            comment.save()
         else:
             comment_form = CommentForm()
 
@@ -77,6 +78,17 @@ class CharacterBuildCreate(generic.CreateView):
     model = CharacterBuild
     form_class = CharacterBuildForm
     template_name = 'characterbuild_form.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.method == "POST":
+            characterbuild = CharacterBuildForm(request.POST)
+            if characterbuild.is_valid():
+                characterbuild.instance.email = request.user.username
+                build = characterbuild.save(commit=False)
+                build.slug = slugify(build.title)
+                build.author = request.user
+                build.save()
+        return HttpResponseRedirect(reverse('home'))
 
 
 class CharacterBuildUpdate(generic.UpdateView):
