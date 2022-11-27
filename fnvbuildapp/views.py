@@ -69,12 +69,19 @@ class BuildDetail(View):
             },
         )
 
+# Build Form Classes
+
 
 class CharacterBuildCreate(generic.CreateView):
     model = CharacterBuild
     form_class = CharacterBuildForm
     template_name = 'characterbuild_form.html'
 
+
+class CharacterBuildUpdate(generic.UpdateView):
+    model = CharacterBuild
+    form_class = CharacterBuildForm
+    template_name = 'characterbuild_form.html'
 
 # Likes Class
 
