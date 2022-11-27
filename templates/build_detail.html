@@ -28,11 +28,14 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body bg-dark text-light">
-                <span class="card-text ">{{ build.description|safe }}</span>
-                <p class="card-text"><strong>Character Gender:</strong> {{ build.get_gender_display }}</p>
+                <span class="card-text">{{ build.description|safe }}</span>
                 <div class="container">
                     <div class="row">
                         <div class="col-md">
+                            <ul class="list-group list-group-flush">
+                                <h6 class="card-title">Character Gender</h6>
+                                <li class="list-group-item"> {{ build.get_gender_display }}</li>
+                            </ul>
                             <ul class="list-group list-group-flush">
                                 <h6 class="card-title">SPECIAL Stats</h6>
                                 <li class="list-group-item">S: {{ build.strength }}</li>

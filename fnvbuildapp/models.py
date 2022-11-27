@@ -153,7 +153,7 @@ class CharacterBuild(models.Model):
             MaxValueValidator(47)
             ]
         )
-    lockipick = models.IntegerField(
+    lockpick = models.IntegerField(
         default=15,
         validators=[
             MinValueValidator(5),
