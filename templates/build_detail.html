@@ -86,6 +86,10 @@
                             </ul>
                         </div>
                     </div>
+                    {% if user.is_authenticated and user == build.author %}
+                    <a class="btn btn-signup btn-lg" href="{% url 'author-edit' build.slug %}">Edit</a>
+                    <a class="btn btn-signup btn-lg" href="{% url 'author-delete' build.slug %}">Delete</a>
+                    {% endif %}
                 </div>
                 <div class="row">
 
