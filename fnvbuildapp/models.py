@@ -24,8 +24,8 @@ class Traits(models.Model):
 
 class TagSkills(models.Model):
     tag_skill_name = models.CharField(max_length=150)
-    skill_detail = models.TextField()
-    skill_image = CloudinaryField('Skill Image')
+    skill_detail = models.TextField(blank=True)
+    skill_image = CloudinaryField('Skill Image', blank=True)
 
     def __str__(self):
         return self.tag_skill_name
@@ -35,19 +35,11 @@ class TagSkills(models.Model):
 
 class Perks(models.Model):
     perk_name = models.CharField(max_length=150)
-    perk_detail = models.TextField()
-    perk_image = CloudinaryField('Perk Image')
+    perk_detail = models.TextField(blank=True)
+    perk_image = CloudinaryField('Perk Image', blank=True)
 
     def __str__(self):
         return self.perk_name
-
-# Starting Skills Model
-
-
-class StartingSkills(models.Model):
-
-    def __str__(self):
-        return f"{[self.barter,self.energy_weapons, self.explosives, self.guns, self.lockipick, self.medicine, self.melee_weapons, self.repair, self.science, self.sneak, self.speech, self.survival, self.unarmed]}"
 
 # Character Build Model
 
