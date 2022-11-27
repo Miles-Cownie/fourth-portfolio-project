@@ -77,6 +77,18 @@ body {
     display: none;
 }
 
+.build-form {
+    font-family: 'Merriweather', sans-serif;
+    max-height: 85vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.form-list {
+    background-color: inherit;
+    color: inherit;
+}
+
 .card-title {
     padding-top: 10px;
     font-weight: 700;

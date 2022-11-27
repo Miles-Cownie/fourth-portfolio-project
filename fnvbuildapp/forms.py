@@ -48,3 +48,9 @@ class CharacterBuildForm(forms.ModelForm):
             'tag_skills': ('Tagged Skills'),
             'perks': ('Recommended Perks'),
         }
+        widgets = {
+            'gender': forms.RadioSelect(),
+            'traits': forms.CheckboxSelectMultiple(),
+            'perks': forms.CheckboxSelectMultiple(),
+            'tag_skills': forms.CheckboxSelectMultiple(),
+        }
