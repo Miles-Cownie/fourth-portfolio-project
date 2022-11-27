@@ -8,7 +8,7 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-class BuildForm(forms.ModelForm):
+class CharacterBuildForm(forms.ModelForm):
     class Meta:
         model = CharacterBuild
         fields = (
@@ -41,3 +41,10 @@ class BuildForm(forms.ModelForm):
             'survival',
             'unarmed',
             )
+        labels = {
+            'title': ('Character Name'),
+            'featured_image': ('Build Image'),
+            'traits': ('Character Traits'),
+            'tag_skills': ('Tagged Skills'),
+            'perks': ('Recommended Perks'),
+        }

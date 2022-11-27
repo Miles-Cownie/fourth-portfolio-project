@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CharacterBuild
-from .forms import CommentForm
+from .forms import CommentForm, CharacterBuildForm
 
 # Home Page View
 
@@ -68,6 +68,13 @@ class BuildDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+
+class CharacterBuildCreate(generic.CreateView):
+    model = CharacterBuild
+    form_class = CharacterBuildForm
+    template_name = 'characterbuild_form.html'
+
 
 # Likes Class
 

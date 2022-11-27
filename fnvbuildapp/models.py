@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from cloudinary.models import CloudinaryField
@@ -228,6 +229,9 @@ class CharacterBuild(models.Model):
 
     def total_likes(self):
         return self.likes.count()
+
+    def get_absolute_url(self):
+        return reverse('character_build', kwargs={'pk': self.pk})
 
 # Character Build Comment Model
 
